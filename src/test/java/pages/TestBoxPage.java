@@ -15,7 +15,7 @@ public class TestBoxPage {
             userEmailInput = $("#userEmail"),
             currentAddressInput = $("[placeholder='Current Address']"),
             permanentAddressInput = $("textarea#permanentAddress"),
-            submitButton = $("#submit"),
+            Button = $("#submit"),
             outputName = $("#output").$("#name"),
             outputEmail = $("#output").$("#email"),
             outputCurrentAddress = $("#output").$("#currentAddress"),
@@ -50,8 +50,8 @@ public class TestBoxPage {
         return this;
     }
 
-    public void pressSubmitButton(){
-        submitButton.click();
+    public void pressButton(){
+        Button.click();
     }
 
     public void checkTextBox(String name, String email, String curAddress, String perAddress){

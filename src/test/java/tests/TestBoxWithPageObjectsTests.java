@@ -1,8 +1,11 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.TestBoxPage;
 
 public class TestBoxWithPageObjectsTests extends TestBase{
+    TestBoxPage testBoxPage = new TestBoxPage();
+
     String userName = "Maks Maks";
     String email = "maks@gmail.com";
     String currentAddress = "New York, Wall Street 12";
@@ -16,7 +19,7 @@ public class TestBoxWithPageObjectsTests extends TestBase{
                 .setUserEmail(email)
                 .setCurrentAddress(currentAddress)
                 .setPermanentAddress(permanentAddress)
-                .pressSubmitButton();
+                .pressButton();
 
         testBoxPage.checkTextBox(
                 userName,
@@ -33,7 +36,7 @@ public class TestBoxWithPageObjectsTests extends TestBase{
                 .setUserEmail(badEmail)
                 .setCurrentAddress(currentAddress)
                 .setPermanentAddress(permanentAddress)
-                .pressSubmitButton();
+                .pressButton();
 
         testBoxPage.checkMissingFields(
                 userName,

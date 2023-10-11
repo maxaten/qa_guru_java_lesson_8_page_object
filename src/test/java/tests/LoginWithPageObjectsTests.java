@@ -1,8 +1,12 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.LoginPage;
+import pages.ProfilePage;
 
 public class LoginWithPageObjectsTests extends TestBase{
+    LoginPage loginPage = new LoginPage();
+    ProfilePage profilePage = new ProfilePage();
 
     String userName = "Maks";
     String password = "123Qwerty!";

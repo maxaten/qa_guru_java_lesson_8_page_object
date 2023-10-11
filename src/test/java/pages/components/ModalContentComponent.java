@@ -9,7 +9,7 @@ public class ModalContentComponent {
 
     SelenideElement modal = $(".modal-content"),
             closeButton = $("#closeLargeModal"),
-            submitText = $("#example-modal-sizes-title-lg"),
+            Text = $("#example-modal-sizes-title-lg"),
             infoUserBody = $(".table-responsive"),
             bodyPage = $(".body-height");
 
@@ -19,7 +19,7 @@ public class ModalContentComponent {
     }
 
     public ModalContentComponent successFormSubmissionText(String value){
-        submitText.shouldHave(text(value));
+        Text.shouldHave(text(value));
         return this;
     }
 
@@ -28,7 +28,7 @@ public class ModalContentComponent {
         return this;
     }
 
-    public ModalContentComponent NotHaveFilledForm(String value){
+    public ModalContentComponent notHaveFilledForm(String value){
         bodyPage.shouldNotHave(text(value));
         return this;
     }

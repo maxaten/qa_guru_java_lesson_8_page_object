@@ -1,8 +1,14 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
+import pages.components.ModalContentComponent;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
+    ModalContentComponent modalContentComponent = new ModalContentComponent();
+
+
     String firstName = "Bruce";
     String lastName = "Wayne";
     String email = "wayneinterprise@waine.com";
@@ -20,6 +26,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     String state = "Haryana";
     String city = "Karnal";
     String successSubmissionText = "Thanks for submitting the form";
+
 
     @Test
     void fillForm() {
@@ -39,7 +46,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                         .setCurrentAddress(currentAddress)
                         .setState(state)
                         .setCity(city)
-                        .Submit();
+                        .submit();
 
         modalContentComponent.checkVisible()
                         .successFormSubmissionText(successSubmissionText)
@@ -62,7 +69,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                         .setGender(gender)
                         .setUserNumber(phoneNumber)
                         .setDateBirth(birthDay[0], birthDay[1], birthDay[2])
-                        .Submit();
+                        .submit();
 
         modalContentComponent.checkVisible()
                         .successFormSubmissionText(successSubmissionText)
@@ -77,9 +84,9 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         registrationPage.openPage()
                         .setFirstName(firstName)
                         .setLastName(lastName)
-                        .Submit();
+                        .submit();
 
         modalContentComponent.checkNotBeVisible()
-                .NotHaveFilledForm(successSubmissionText);
+                .notHaveFilledForm(successSubmissionText);
     }
 }

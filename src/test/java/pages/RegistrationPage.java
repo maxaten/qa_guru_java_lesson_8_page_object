@@ -5,7 +5,7 @@ import pages.components.CalendarComponent;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import
 
 public class RegistrationPage {
 
@@ -31,10 +31,15 @@ public class RegistrationPage {
     public RegistrationPage openPage(){
         open(uri);
         titleLabel.shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#app footer').remove()");
+        deleteFooterAndAdd();
         return this;
     }
+
+    public void deleteFooterAndAdd(){
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('#app footer').remove()");
+    }
+
 
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);
@@ -99,7 +104,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage Submit(){
+    public RegistrationPage submit(){
         submitButton.click();
         return this;
     }
