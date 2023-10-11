@@ -3,11 +3,13 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationTests extends TestBase{
+public class RegistrationTests extends TestBase {
     String uri = "/automation-practice-form";
     String firstName = "Bruce";
     String lastName = "Wayne";

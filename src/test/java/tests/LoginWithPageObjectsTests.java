@@ -1,33 +1,31 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
-import pages.ProfilePage;
 
 public class LoginWithPageObjectsTests extends TestBase{
 
-    LoginPage loginPage = new LoginPage();
-    ProfilePage profilePage = new ProfilePage();
-
+    String userName = "Maks";
+    String password = "123Qwerty!";
+    String badPassword = "123";
+    String alertText = "Invalid username or password!";
 
     @Test
     void fillLoginForm(){
         loginPage.openPage()
-                .setUserName("Maks")
-                .setPassword("123Qwerty!")
+                .setUserName(userName)
+                .setPassword(password)
                 .pressLoginButton();
 
-        profilePage.checkUserName("Maks");
+        profilePage.checkUserName(userName);
     }
 
     @Test
     void incorrectPassword(){
         loginPage.openPage()
-                .setUserName("Maks")
-                .setPassword("123")
-                .pressLoginButton()
+                .setUserName(userName)
+                .setPassword(badPassword)
+                .pressLoginButton();
 
-                .checkAlert("Invalid username or password!");
+        loginPage.checkAlert(alertText);
     }
-
 }
