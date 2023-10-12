@@ -1,13 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import utils.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TestBoxPage {
 
     String uri = "/text-box";
+    FooterAndAdd footerAndAdd = new FooterAndAdd();
 
     SelenideElement
             titleLabel = $(".body-height"),
@@ -25,8 +26,7 @@ public class TestBoxPage {
     public TestBoxPage openPage(){
         open(uri);
         titleLabel.shouldHave(text("Text Box"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#app footer').remove()");
+        footerAndAdd.deleteFooterAndAdd();
         return this;
     }
 

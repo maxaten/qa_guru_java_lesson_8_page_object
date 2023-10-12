@@ -1,13 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import utils.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class LoginPage {
 
     String uri = "/login";
+    FooterAndAdd footerAndAdd = new FooterAndAdd();
 
     SelenideElement titleLabel = $(".login-wrapper"),
             userNameInput = $("#userName"),
@@ -18,8 +19,7 @@ public class LoginPage {
     public LoginPage openPage(){
         open(uri);
         titleLabel.shouldHave(text("Login"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#app footer').remove()");
+        footerAndAdd.deleteFooterAndAdd();
         return this;
     }
 

@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import utils.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -11,6 +12,7 @@ public class RegistrationPage {
     String uri = "/automation-practice-form";
 
     CalendarComponent calendar = new CalendarComponent();
+    FooterAndAdd footerAndAdd = new FooterAndAdd();
 
     SelenideElement titleLabel = $(".practice-form-wrapper"),
                     firstNameInput = $("#firstName"),
@@ -30,13 +32,8 @@ public class RegistrationPage {
     public RegistrationPage openPage(){
         open(uri);
         titleLabel.shouldHave(text("Student Registration Form"));
-        deleteFooterAndAdd();
+        footerAndAdd.deleteFooterAndAdd();
         return this;
-    }
-
-    public void deleteFooterAndAdd(){
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#app footer').remove()");
     }
 
 
