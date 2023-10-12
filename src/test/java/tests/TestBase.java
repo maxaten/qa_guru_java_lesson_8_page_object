@@ -5,8 +5,6 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-
 public class TestBase {
 
     @BeforeAll
@@ -15,7 +13,6 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
     }
-
 
     @AfterAll
     static void tearDown(){

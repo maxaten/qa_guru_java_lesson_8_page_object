@@ -6,6 +6,7 @@ import pages.TestBoxPage;
 public class TestBoxWithPageObjectsTests extends TestBase{
     TestBoxPage testBoxPage = new TestBoxPage();
 
+    String title = "Text Box";
     String userName = "Maks Maks";
     String email = "maks@gmail.com";
     String currentAddress = "New York, Wall Street 12";
@@ -15,6 +16,7 @@ public class TestBoxWithPageObjectsTests extends TestBase{
     @Test
     void fillForm(){
         testBoxPage.openPage()
+                .deleteFooterAndAdd()
                 .setUserName(userName)
                 .setUserEmail(email)
                 .setCurrentAddress(currentAddress)
@@ -32,6 +34,8 @@ public class TestBoxWithPageObjectsTests extends TestBase{
     @Test
     void incorrectEmail(){
         testBoxPage.openPage()
+                .checkTitle(title)
+                .deleteFooterAndAdd()
                 .setUserName(userName)
                 .setUserEmail(badEmail)
                 .setCurrentAddress(currentAddress)

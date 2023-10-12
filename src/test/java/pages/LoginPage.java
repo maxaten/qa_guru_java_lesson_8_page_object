@@ -1,7 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import utils.FooterAndAdd;
+import utils.cutom.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -18,7 +18,15 @@ public class LoginPage {
 
     public LoginPage openPage(){
         open(uri);
-        titleLabel.shouldHave(text("Login"));
+        return this;
+    }
+
+    public LoginPage checkTitle(String value){
+        titleLabel.shouldHave(text(value));
+        return this;
+    }
+
+    public LoginPage deleteFooterAndAdd(){
         footerAndAdd.deleteFooterAndAdd();
         return this;
     }
@@ -33,13 +41,11 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage pressLoginButton(){
+    public void pressLoginButton(){
         loginButton.click();
-        return this;
     }
 
-    public LoginPage checkAlert(String value){
+    public void checkAlert(String value){
         alertTextOfIncorrectPassOrUserName.shouldHave(text(value));
-        return this;
     }
 }

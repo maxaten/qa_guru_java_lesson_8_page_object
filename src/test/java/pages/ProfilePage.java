@@ -10,8 +10,7 @@ public class ProfilePage {
     SelenideElement userName = $("#userName-value");
 
 
-    public ProfilePage checkUserName(String value){
+    public void checkUserName(String value){
         userName.shouldHave(text(value));
-        return this;
     }
 }

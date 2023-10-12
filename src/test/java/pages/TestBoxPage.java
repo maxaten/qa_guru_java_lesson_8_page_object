@@ -1,7 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import utils.FooterAndAdd;
+import utils.cutom.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,7 +25,15 @@ public class TestBoxPage {
 
     public TestBoxPage openPage(){
         open(uri);
-        titleLabel.shouldHave(text("Text Box"));
+        return this;
+    }
+
+    public TestBoxPage checkTitle(String value){
+        titleLabel.shouldHave(text(value));
+        return this;
+    }
+
+    public TestBoxPage deleteFooterAndAdd(){
         footerAndAdd.deleteFooterAndAdd();
         return this;
     }

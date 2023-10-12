@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-import utils.FooterAndAdd;
+import utils.cutom.FooterAndAdd;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -31,11 +31,18 @@ public class RegistrationPage {
 
     public RegistrationPage openPage(){
         open(uri);
-        titleLabel.shouldHave(text("Student Registration Form"));
-        footerAndAdd.deleteFooterAndAdd();
         return this;
     }
 
+    public RegistrationPage checkTitle(String value){
+        titleLabel.shouldHave(text(value));
+        return this;
+    }
+
+    public RegistrationPage deleteFooterAndAdd(){
+        footerAndAdd.deleteFooterAndAdd();
+        return this;
+    }
 
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);
@@ -100,8 +107,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage submit(){
+    public void submit(){
         submitButton.click();
-        return this;
     }
 }

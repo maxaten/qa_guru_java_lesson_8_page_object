@@ -8,6 +8,7 @@ public class LoginWithPageObjectsTests extends TestBase{
     LoginPage loginPage = new LoginPage();
     ProfilePage profilePage = new ProfilePage();
 
+    String title = "Login";
     String userName = "Maks";
     String password = "123Qwerty!";
     String badPassword = "123";
@@ -16,6 +17,8 @@ public class LoginWithPageObjectsTests extends TestBase{
     @Test
     void fillLoginForm(){
         loginPage.openPage()
+                .checkTitle(title)
+                .deleteFooterAndAdd()
                 .setUserName(userName)
                 .setPassword(password)
                 .pressLoginButton();
@@ -26,6 +29,8 @@ public class LoginWithPageObjectsTests extends TestBase{
     @Test
     void incorrectPassword(){
         loginPage.openPage()
+                .checkTitle(title)
+                .deleteFooterAndAdd()
                 .setUserName(userName)
                 .setPassword(badPassword)
                 .pressLoginButton();

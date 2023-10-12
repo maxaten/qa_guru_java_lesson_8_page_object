@@ -5,10 +5,12 @@ import pages.RegistrationPage;
 import pages.components.ModalContentComponent;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
+
     RegistrationPage registrationPage = new RegistrationPage();
     ModalContentComponent modalContentComponent = new ModalContentComponent();
 
 
+    String title = "Student Registration Form";
     String firstName = "Bruce";
     String lastName = "Wayne";
     String email = "wayneinterprise@waine.com";
@@ -31,22 +33,24 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void fillForm() {
         registrationPage.openPage()
-                        .setFirstName(firstName)
-                        .setLastName(lastName)
-                        .setUserEmail(email)
-                        .setGender(gender)
-                        .setUserNumber(phoneNumber)
-                        .setDateBirth(birthDay[0], birthDay[1], birthDay[2])
-                        .setSubjectsInput(subject1)
-                        .setSubjectsInput(subject2)
-                        .setHobbies(hobby1)
-                        .setHobbies(hobby2)
-                        .setHobbies(hobby3)
-                        .setImage(pathImage)
-                        .setCurrentAddress(currentAddress)
-                        .setState(state)
-                        .setCity(city)
-                        .submit();
+                .checkTitle(title)
+                .deleteFooterAndAdd()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(email)
+                .setGender(gender)
+                .setUserNumber(phoneNumber)
+                .setDateBirth(birthDay[0], birthDay[1], birthDay[2])
+                .setSubjectsInput(subject1)
+                .setSubjectsInput(subject2)
+                .setHobbies(hobby1)
+                .setHobbies(hobby2)
+                .setHobbies(hobby3)
+                .setImage(pathImage)
+                .setCurrentAddress(currentAddress)
+                .setState(state)
+                .setCity(city)
+                .submit();
 
         modalContentComponent.checkVisible()
                         .successFormSubmissionText(successSubmissionText)
@@ -64,12 +68,14 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void fillingRequiredFields(){
         registrationPage.openPage()
-                        .setFirstName(firstName)
-                        .setLastName(lastName)
-                        .setGender(gender)
-                        .setUserNumber(phoneNumber)
-                        .setDateBirth(birthDay[0], birthDay[1], birthDay[2])
-                        .submit();
+                .checkTitle(title)
+                .deleteFooterAndAdd()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setGender(gender)
+                .setUserNumber(phoneNumber)
+                .setDateBirth(birthDay[0], birthDay[1], birthDay[2])
+                .submit();
 
         modalContentComponent.checkVisible()
                         .successFormSubmissionText(successSubmissionText)
@@ -82,9 +88,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void blankFieldsForm(){
         registrationPage.openPage()
-                        .setFirstName(firstName)
-                        .setLastName(lastName)
-                        .submit();
+                .checkTitle(title)
+                .deleteFooterAndAdd()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .submit();
 
         modalContentComponent.checkNotBeVisible()
                 .notHaveFilledForm(successSubmissionText);
